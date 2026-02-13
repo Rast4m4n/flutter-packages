@@ -23,7 +23,7 @@ class DocxStyle {
   final int? spacingAfter;
   final int? spacingBefore;
   final int? lineSpacing;
-  final String? lineRule; // 'auto', 'exact', 'atLeast'
+  final DocxLineRule? lineRule; // 'auto', 'exact', 'atLeast'
   final int? indentLeft;
   final int? indentRight;
   final int? indentFirstLine;
@@ -243,7 +243,7 @@ class DocxStyle {
     int? spacingAfter;
     int? spacingBefore;
     int? lineSpacing;
-    String? lineRule;
+    DocxLineRule? lineRule;
     int? indentLeft;
     int? indentRight;
     int? indentFirstLine;
@@ -283,7 +283,7 @@ class DocxStyle {
       if (line != null) lineSpacing = int.tryParse(line);
 
       final rule = spacingElem.getAttribute('w:lineRule');
-      if (rule != null) lineRule = rule;
+      if (rule != null) lineRule = DocxLineRule.parseString(rule);
     }
 
     // Indentation

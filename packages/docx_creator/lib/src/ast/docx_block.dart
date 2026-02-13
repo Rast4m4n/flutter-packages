@@ -57,7 +57,7 @@ class DocxParagraph extends DocxBlock {
   final int? lineSpacing;
 
   /// Line spacing rule ('auto', 'exact', 'atLeast').
-  final String? lineRule;
+  final DocxLineRule? lineRule;
 
   /// Left indentation in twips.
   final int? indentLeft;
@@ -160,8 +160,16 @@ class DocxParagraph extends DocxBlock {
     double? fontSize,
     String? fontFamily,
     DocxBorderSide? borderBottom,
+    DocxLineRule? lineRule,
+    int? lineSpacing,
+    int? spacingAfter,
+    int? spacingBefore,
   }) {
     return DocxParagraph(
+      lineRule: lineRule,
+      lineSpacing: lineSpacing,
+      spacingAfter: spacingAfter,
+      spacingBefore: spacingBefore,
       align: align,
       children: [DocxText(text, fontSize: fontSize, fontFamily: fontFamily)],
       borderBottomSide: borderBottom,
@@ -177,8 +185,16 @@ class DocxParagraph extends DocxBlock {
     DocxHeadingLevel level,
     String text, {
     DocxAlign align = DocxAlign.left,
+    DocxLineRule? lineRule,
+    int? lineSpacing,
+    int? spacingAfter,
+    int? spacingBefore,
   }) {
     return DocxParagraph(
+      lineRule: lineRule,
+      lineSpacing: lineSpacing,
+      spacingAfter: spacingAfter,
+      spacingBefore: spacingBefore,
       styleId: level.styleId,
       align: align,
       children: [
@@ -191,43 +207,115 @@ class DocxParagraph extends DocxBlock {
   factory DocxParagraph.heading1(
     String text, {
     DocxAlign align = DocxAlign.left,
+    DocxLineRule? lineRule,
+    int? lineSpacing,
+    int? spacingAfter,
+    int? spacingBefore,
   }) =>
-      DocxParagraph.heading(DocxHeadingLevel.h1, text, align: align);
+      DocxParagraph.heading(
+        DocxHeadingLevel.h1,
+        text,
+        align: align,
+        lineRule: lineRule,
+        lineSpacing: lineSpacing,
+        spacingAfter: spacingAfter,
+        spacingBefore: spacingBefore,
+      );
 
   /// Creates an H2 heading.
   factory DocxParagraph.heading2(
     String text, {
     DocxAlign align = DocxAlign.left,
+    DocxLineRule? lineRule,
+    int? lineSpacing,
+    int? spacingAfter,
+    int? spacingBefore,
   }) =>
-      DocxParagraph.heading(DocxHeadingLevel.h2, text, align: align);
+      DocxParagraph.heading(
+        DocxHeadingLevel.h2,
+        text,
+        align: align,
+        lineRule: lineRule,
+        lineSpacing: lineSpacing,
+        spacingAfter: spacingAfter,
+        spacingBefore: spacingBefore,
+      );
 
   /// Creates an H3 heading.
   factory DocxParagraph.heading3(
     String text, {
     DocxAlign align = DocxAlign.left,
+    DocxLineRule? lineRule,
+    int? lineSpacing,
+    int? spacingAfter,
+    int? spacingBefore,
   }) =>
-      DocxParagraph.heading(DocxHeadingLevel.h3, text, align: align);
+      DocxParagraph.heading(
+        DocxHeadingLevel.h3,
+        text,
+        align: align,
+        lineRule: lineRule,
+        lineSpacing: lineSpacing,
+        spacingAfter: spacingAfter,
+        spacingBefore: spacingBefore,
+      );
 
   /// Creates an H4 heading.
   factory DocxParagraph.heading4(
     String text, {
     DocxAlign align = DocxAlign.left,
+    DocxLineRule? lineRule,
+    int? lineSpacing,
+    int? spacingAfter,
+    int? spacingBefore,
   }) =>
-      DocxParagraph.heading(DocxHeadingLevel.h4, text, align: align);
+      DocxParagraph.heading(
+        DocxHeadingLevel.h4,
+        text,
+        align: align,
+        lineRule: lineRule,
+        lineSpacing: lineSpacing,
+        spacingAfter: spacingAfter,
+        spacingBefore: spacingBefore,
+      );
 
   /// Creates an H5 heading.
   factory DocxParagraph.heading5(
     String text, {
     DocxAlign align = DocxAlign.left,
+    DocxLineRule? lineRule,
+    int? lineSpacing,
+    int? spacingAfter,
+    int? spacingBefore,
   }) =>
-      DocxParagraph.heading(DocxHeadingLevel.h5, text, align: align);
+      DocxParagraph.heading(
+        DocxHeadingLevel.h5,
+        text,
+        align: align,
+        lineRule: lineRule,
+        lineSpacing: lineSpacing,
+        spacingAfter: spacingAfter,
+        spacingBefore: spacingBefore,
+      );
 
   /// Creates an H6 heading.
   factory DocxParagraph.heading6(
     String text, {
     DocxAlign align = DocxAlign.left,
+    DocxLineRule? lineRule,
+    int? lineSpacing,
+    int? spacingAfter,
+    int? spacingBefore,
   }) =>
-      DocxParagraph.heading(DocxHeadingLevel.h6, text, align: align);
+      DocxParagraph.heading(
+        DocxHeadingLevel.h6,
+        text,
+        align: align,
+        lineRule: lineRule,
+        lineSpacing: lineSpacing,
+        spacingAfter: spacingAfter,
+        spacingBefore: spacingBefore,
+      );
 
   /// Creates a blockquote paragraph.
   factory DocxParagraph.quote(String text) {
@@ -273,7 +361,7 @@ class DocxParagraph extends DocxBlock {
     int? spacingAfter,
     int? spacingBefore,
     int? lineSpacing,
-    String? lineRule,
+    DocxLineRule? lineRule,
     int? indentLeft,
     int? indentRight,
     int? indentFirstLine,
@@ -444,7 +532,7 @@ class DocxParagraph extends DocxBlock {
                     builder.attribute('w:line', lineSpacing.toString());
                   }
                   if (lineRule != null) {
-                    builder.attribute('w:lineRule', lineRule!);
+                    builder.attribute('w:lineRule', lineRule!.name);
                   }
                 });
               }

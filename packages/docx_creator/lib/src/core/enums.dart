@@ -239,3 +239,30 @@ extension DocxHeadingLevelExtension on DocxHeadingLevel {
     }
   }
 }
+
+// ============================================================
+// LINE RULES
+// ============================================================
+
+///   Type spacing between lines
+///
+/// - `auto` - Automatic spacing based on standard font
+/// - `exact` - Precise spacing. w:line defines a fixed distance that does not change even if the font size increases.
+/// - `atLeast` - Minimum spacing. Lines cannot be closer than this, but may move apart if the font is too large.
+enum DocxLineRule {
+  auto('auto'),
+  exact('exact'),
+  atLeast('atLeast');
+
+  const DocxLineRule(this.name);
+  final String name;
+
+  static DocxLineRule parseString(String lineRule) {
+    return switch (lineRule) {
+      'exact' => DocxLineRule.exact,
+      'auto' => DocxLineRule.auto,
+      'atLeast' => DocxLineRule.atLeast,
+      _ => throw Exception('Unknown line spacing type')
+    };
+  }
+}

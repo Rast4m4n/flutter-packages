@@ -5,7 +5,6 @@ import 'docx_block.dart';
 import 'docx_inline.dart';
 import 'docx_node.dart';
 
-//TODO Добавить больше свойств для таблицы
 /// Table styling options.
 ///
 /// Use these to create professional looking tables.
