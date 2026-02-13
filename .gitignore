@@ -24,3 +24,8 @@ build/
 pubspec.lock
 .metadata
 melos.yaml.lock
+
+# test generations, vscode configuration
+*.docx
+/packages/docx_creator/example/tag_test.dart
+.vscode/

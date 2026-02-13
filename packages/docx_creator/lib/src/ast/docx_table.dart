@@ -5,6 +5,7 @@ import 'docx_block.dart';
 import 'docx_inline.dart';
 import 'docx_node.dart';
 
+//TODO Добавить больше свойств для таблицы
 /// Table styling options.
 ///
 /// Use these to create professional looking tables.
@@ -675,6 +676,10 @@ class DocxTableCell extends DocxNode {
   final int colSpan;
 
   /// Row span (merge cells vertically).
+  ///
+  /// - rowSpan > 1  -> starting cell of merge (w:vMerge restart)
+  /// - rowSpan == 0 -> continuation cell (w:vMerge continue)
+  /// - else rowSpan == 1 -> stop merger
   final int rowSpan;
 
   /// Vertical alignment within the cell.
@@ -850,6 +855,13 @@ class DocxTableCell extends DocxNode {
                 'w:vMerge',
                 nest: () {
                   builder.attribute('w:val', 'restart');
+                },
+              );
+            } else if (rowSpan == 0) {
+              builder.element(
+                'w:vMerge',
+                nest: () {
+                  builder.attribute('w:val', 'continue');
                 },
               );
             }
