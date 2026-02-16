@@ -221,6 +221,14 @@ enum DocxTableWrap {
 
   const DocxTableWrap(this.name);
   final String name;
+
+  static DocxTableWrap fromXml(String wrap) {
+    return switch (wrap) {
+      'auto' => auto,
+      'around' => around,
+      _ => throw UnimplementedError()
+    };
+  }
 }
 
 // ============================================================
