@@ -213,6 +213,16 @@ enum DocxVerticalAlign { top, center, bottom }
 
 enum DocxWidthType { auto, dxa, pct }
 
+/// - [auto] - There is no wrapping (the table is embedded in the row).
+/// - [around] - Enables text wrapping around the table (the table "floats").
+enum DocxTableWrap {
+  around('around'),
+  auto('auto');
+
+  const DocxTableWrap(this.name);
+  final String name;
+}
+
 // ============================================================
 // HEADING LEVELS
 // ============================================================
