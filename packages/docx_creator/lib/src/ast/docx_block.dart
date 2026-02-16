@@ -164,12 +164,18 @@ class DocxParagraph extends DocxBlock {
     int? lineSpacing,
     int? spacingAfter,
     int? spacingBefore,
+    int? indentLeft,
+    int? indentRight,
+    int? indentFirstLine,
   }) {
     return DocxParagraph(
       lineRule: lineRule,
       lineSpacing: lineSpacing,
       spacingAfter: spacingAfter,
       spacingBefore: spacingBefore,
+      indentFirstLine: indentFirstLine,
+      indentLeft: indentLeft,
+      indentRight: indentRight,
       align: align,
       children: [DocxText(text, fontSize: fontSize, fontFamily: fontFamily)],
       borderBottomSide: borderBottom,
@@ -189,6 +195,9 @@ class DocxParagraph extends DocxBlock {
     int? lineSpacing,
     int? spacingAfter,
     int? spacingBefore,
+    int? indentLeft,
+    int? indentRight,
+    int? indentFirstLine,
   }) {
     return DocxParagraph(
       lineRule: lineRule,
@@ -196,6 +205,9 @@ class DocxParagraph extends DocxBlock {
       spacingAfter: spacingAfter,
       spacingBefore: spacingBefore,
       styleId: level.styleId,
+      indentFirstLine: indentFirstLine,
+      indentLeft: indentLeft,
+      indentRight: indentRight,
       align: align,
       children: [
         DocxText(text),
@@ -211,6 +223,9 @@ class DocxParagraph extends DocxBlock {
     int? lineSpacing,
     int? spacingAfter,
     int? spacingBefore,
+    int? indentLeft,
+    int? indentRight,
+    int? indentFirstLine,
   }) =>
       DocxParagraph.heading(
         DocxHeadingLevel.h1,
@@ -220,6 +235,9 @@ class DocxParagraph extends DocxBlock {
         lineSpacing: lineSpacing,
         spacingAfter: spacingAfter,
         spacingBefore: spacingBefore,
+        indentFirstLine: indentFirstLine,
+        indentLeft: indentLeft,
+        indentRight: indentRight,
       );
 
   /// Creates an H2 heading.
@@ -230,6 +248,9 @@ class DocxParagraph extends DocxBlock {
     int? lineSpacing,
     int? spacingAfter,
     int? spacingBefore,
+    int? indentLeft,
+    int? indentRight,
+    int? indentFirstLine,
   }) =>
       DocxParagraph.heading(
         DocxHeadingLevel.h2,
@@ -239,6 +260,9 @@ class DocxParagraph extends DocxBlock {
         lineSpacing: lineSpacing,
         spacingAfter: spacingAfter,
         spacingBefore: spacingBefore,
+        indentFirstLine: indentFirstLine,
+        indentLeft: indentLeft,
+        indentRight: indentRight,
       );
 
   /// Creates an H3 heading.
@@ -249,6 +273,9 @@ class DocxParagraph extends DocxBlock {
     int? lineSpacing,
     int? spacingAfter,
     int? spacingBefore,
+    int? indentLeft,
+    int? indentRight,
+    int? indentFirstLine,
   }) =>
       DocxParagraph.heading(
         DocxHeadingLevel.h3,
@@ -258,6 +285,9 @@ class DocxParagraph extends DocxBlock {
         lineSpacing: lineSpacing,
         spacingAfter: spacingAfter,
         spacingBefore: spacingBefore,
+        indentFirstLine: indentFirstLine,
+        indentLeft: indentLeft,
+        indentRight: indentRight,
       );
 
   /// Creates an H4 heading.
@@ -268,6 +298,9 @@ class DocxParagraph extends DocxBlock {
     int? lineSpacing,
     int? spacingAfter,
     int? spacingBefore,
+    int? indentLeft,
+    int? indentRight,
+    int? indentFirstLine,
   }) =>
       DocxParagraph.heading(
         DocxHeadingLevel.h4,
@@ -277,6 +310,9 @@ class DocxParagraph extends DocxBlock {
         lineSpacing: lineSpacing,
         spacingAfter: spacingAfter,
         spacingBefore: spacingBefore,
+        indentFirstLine: indentFirstLine,
+        indentLeft: indentLeft,
+        indentRight: indentRight,
       );
 
   /// Creates an H5 heading.
@@ -287,6 +323,9 @@ class DocxParagraph extends DocxBlock {
     int? lineSpacing,
     int? spacingAfter,
     int? spacingBefore,
+    int? indentLeft,
+    int? indentRight,
+    int? indentFirstLine,
   }) =>
       DocxParagraph.heading(
         DocxHeadingLevel.h5,
@@ -296,6 +335,9 @@ class DocxParagraph extends DocxBlock {
         lineSpacing: lineSpacing,
         spacingAfter: spacingAfter,
         spacingBefore: spacingBefore,
+        indentFirstLine: indentFirstLine,
+        indentLeft: indentLeft,
+        indentRight: indentRight,
       );
 
   /// Creates an H6 heading.
@@ -306,6 +348,9 @@ class DocxParagraph extends DocxBlock {
     int? lineSpacing,
     int? spacingAfter,
     int? spacingBefore,
+    int? indentLeft,
+    int? indentRight,
+    int? indentFirstLine,
   }) =>
       DocxParagraph.heading(
         DocxHeadingLevel.h6,
@@ -315,6 +360,9 @@ class DocxParagraph extends DocxBlock {
         lineSpacing: lineSpacing,
         spacingAfter: spacingAfter,
         spacingBefore: spacingBefore,
+        indentFirstLine: indentFirstLine,
+        indentLeft: indentLeft,
+        indentRight: indentRight,
       );
 
   /// Creates a blockquote paragraph.
