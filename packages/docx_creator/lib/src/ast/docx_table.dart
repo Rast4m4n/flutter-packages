@@ -143,7 +143,7 @@ class DocxTablePosition {
   /// Y position in twips (from the vertical anchor).
   final int? tblpY;
 
-  /// X table indention in twips.
+  /// X table indention default in twips(dxa).
   final int? tblInd;
 
   /// Left margin from surrounding text in twips.
@@ -396,7 +396,10 @@ class DocxTable extends DocxBlock {
                   builder.attribute('w:vertAnchor', position!.vAnchor.name);
                   builder.attribute('w:horzAnchor', position!.hAnchor.name);
                   if (position!.tblInd != null) {
-                    builder.attribute('w:tblInd', position!.tblInd.toString());
+                    builder.element('w:tblInd', nest: () {
+                      builder.attribute('w:w', position!.tblInd.toString());
+                      builder.attribute('w:type', widthType.name);
+                    });
                   }
                   if (position!.tblpX != null) {
                     builder.attribute('w:tblpX', position!.tblpX.toString());
