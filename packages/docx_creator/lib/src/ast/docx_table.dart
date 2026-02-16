@@ -143,6 +143,9 @@ class DocxTablePosition {
   /// Y position in twips (from the vertical anchor).
   final int? tblpY;
 
+  /// X table indention in twips.
+  final int? tblInd;
+
   /// Left margin from surrounding text in twips.
   final int leftFromText;
 
@@ -164,6 +167,7 @@ class DocxTablePosition {
     this.rightFromText = 180,
     this.topFromText = 0,
     this.bottomFromText = 0,
+    this.tblInd,
   });
 
   /// Center the table horizontally.
@@ -391,6 +395,9 @@ class DocxTable extends DocxBlock {
                       'w:bottomFromText', position!.bottomFromText.toString());
                   builder.attribute('w:vertAnchor', position!.vAnchor.name);
                   builder.attribute('w:horzAnchor', position!.hAnchor.name);
+                  if (position!.tblInd != null) {
+                    builder.attribute('w:tblInd', position!.tblInd.toString());
+                  }
                   if (position!.tblpX != null) {
                     builder.attribute('w:tblpX', position!.tblpX.toString());
                   }
