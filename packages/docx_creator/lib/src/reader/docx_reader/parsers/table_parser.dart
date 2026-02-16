@@ -20,7 +20,6 @@ class TableParser {
     DocxTablePosition? position;
     String? styleId;
     String? tblOverlap;
-    DocxTableWrap tblWrap = DocxTableWrap.auto;
 
     if (tblPr != null) {
       final tblBorders = tblPr.getElement('w:tblBorders');
@@ -33,12 +32,6 @@ class TableParser {
           borderInsideH: _parseBorderSide(tblBorders.getElement('w:insideH')),
           borderInsideV: _parseBorderSide(tblBorders.getElement('w:insideV')),
         );
-      }
-
-      final tblWrapEl = tblPr.getElement('w:tblWrap');
-      if (tblWrapEl != null) {
-        tblWrap =
-            DocxTableWrap.fromXml(tblWrapEl.getAttribute('w:type') ?? 'auto');
       }
 
       // Parse table shading (background)
@@ -277,7 +270,6 @@ class TableParser {
     final hasHeader = finalRows.any((row) => row.isHeader);
 
     return DocxTable(
-      tblWrap: tblWrap,
       rows: finalRows,
       style: style,
       width: tableWidth,
