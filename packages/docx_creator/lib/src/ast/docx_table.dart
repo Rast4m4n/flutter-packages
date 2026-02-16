@@ -231,9 +231,6 @@ class DocxTable extends DocxBlock {
   /// Table width type.
   final DocxWidthType widthType;
 
-  /// Determines how text wraps around a table.
-  final DocxTableWrap tblWrap;
-
   /// Whether first row is a header.
   final bool hasHeader;
 
@@ -291,7 +288,6 @@ class DocxTable extends DocxBlock {
     this.width,
     this.widthType = DocxWidthType.auto,
     this.hasHeader = true,
-    this.tblWrap = DocxTableWrap.auto,
     this.alignment,
     this.position,
     this.styleId,
@@ -347,7 +343,6 @@ class DocxTable extends DocxBlock {
     String? tblOverlap,
     DocxTableLook? look,
     List<int>? gridColumns,
-    DocxTableWrap? tblWrap,
   }) {
     return DocxTable(
       rows: rows ?? this.rows,
@@ -361,7 +356,6 @@ class DocxTable extends DocxBlock {
       tblOverlap: tblOverlap ?? this.tblOverlap,
       look: look ?? this.look,
       gridColumns: gridColumns ?? this.gridColumns,
-      tblWrap: tblWrap ?? this.tblWrap,
       id: id,
     );
   }
@@ -392,10 +386,6 @@ class DocxTable extends DocxBlock {
               builder.element(
                 'w:tblpPr',
                 nest: () {
-                  builder.element('w:tblWrap', nest: () {
-                    builder.attribute('w:type', tblWrap.name);
-                  });
-
                   builder.attribute(
                       'w:leftFromText', position!.leftFromText.toString());
                   builder.attribute(
